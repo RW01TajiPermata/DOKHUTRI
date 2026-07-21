@@ -3,7 +3,11 @@
 {% block content %}
 <main>
   <section class="hero">
-    <img src="{{ hero.cover }}" alt="17 Agustus Desa Kita">
+    <div class="hero-slides" aria-label="Galeri foto banner">
+      {% for cover in hero.covers %}
+      <img class="hero-slide {% if loop.first %}is-active{% endif %}" src="{{ cover }}" alt="Dokumentasi HUT RI ke-81" {% if not loop.first %}loading="lazy"{% endif %}>
+      {% endfor %}
+    </div>
     <div class="hero-shade"></div>
 
     <div class="hero-copy">
@@ -20,6 +24,16 @@
     <div class="hero-badge">
       DIRGAHAYU<br>
       <b>INDONESIA</b>
+    </div>
+
+    <div class="hero-controls" aria-label="Kontrol slideshow banner">
+      <button class="hero-arrow" type="button" data-hero-prev aria-label="Foto sebelumnya">‹</button>
+      <div class="hero-dots">
+        {% for cover in hero.covers %}
+        <button class="hero-dot {% if loop.first %}is-active{% endif %}" type="button" data-hero-dot="{{ loop.index0 }}" aria-label="Tampilkan foto {{ loop.index }}"></button>
+        {% endfor %}
+      </div>
+      <button class="hero-arrow" type="button" data-hero-next aria-label="Foto berikutnya">›</button>
     </div>
   </section>
 
