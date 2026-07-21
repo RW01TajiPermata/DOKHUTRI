@@ -13,7 +13,7 @@ HOME_HERO = {
         "https://lh3.googleusercontent.com/d/1ermCqVeUvMwUDwjDouKPynadjYKq47ma=w2000",
         "https://lh3.googleusercontent.com/d/1sZtrn6-Lg-lgRfHQUPRq2rkmMY61vjaj=w2000",
         "https://lh3.googleusercontent.com/d/1nFbXprSbIe1x7ljy3xegm0_94ZZtgTe9=w2000",
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1800&q=85",
+        "https://lh3.googleusercontent.com/d/1lXnh00r6gctU-sh-1mJMVJ3RiKBEwiha=w2000",
     ],
 }
 
