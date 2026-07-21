@@ -8,7 +8,13 @@ app = Flask(__name__)
 
 # Ganti gambar banner utama "17 Agustus Desa Kita" di sini.
 HOME_HERO = {
-    "cover": "https://lh3.googleusercontent.com/d/1sZtrn6-Lg-lgRfHQUPRq2rkmMY61vjaj=w2000",
+    # Tempel/ganti URL gambar banner di daftar ini. Maksimal atau minimal bebas.
+    "covers": [
+        "https://lh3.googleusercontent.com/d/1ermCqVeUvMwUDwjDouKPynadjYKq47ma=w2000",
+        "https://lh3.googleusercontent.com/d/1sZtrn6-Lg-lgRfHQUPRq2rkmMY61vjaj=w2000",
+        "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1800&q=85",
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1800&q=85",
+    ],
 }
 
 EVENTS = {
