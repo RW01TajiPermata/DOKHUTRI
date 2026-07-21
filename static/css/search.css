@@ -1,0 +1,3 @@
+.event-card[hidden] { display: none; }
+.search-no-result { margin: 22px 0 0; color: #aaa; text-align: center; }
+.search-submit { border: 0; padding: 0; margin: 0 7px 0 0; background: transparent; color: #d1b06a; font-size: 20px; line-height: 1; cursor: pointer; }

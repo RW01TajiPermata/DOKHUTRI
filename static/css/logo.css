@@ -1,0 +1,20 @@
+.permata-logo {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.brand-hut {
+  width: 185px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+}
+
+.brand-hut img {
+  width: 100%;
+  max-height: 66px;
+  object-fit: contain;
+}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+  <section class="hero">
+    <img src="{{ hero.cover }}" alt="17 Agustus Desa Kita">
+    <div class="hero-shade"></div>
+
+    <div class="hero-copy">
+      <!-- GANTI TEKS BANNER UTAMA DI BAGIAN INI -->
+      <p class="eyebrow">SPESIAL HUT RI KE-81</p>
+      <h1>17 Agustus<br>Desa Taji</h1>
+      <p>
+        Kumpulan dokumentasi foto perayaan kemerdekaan Republik Indonesia
+        di desa Taji.
+      </p>
+      <a class="button" href="#event">▸ &nbsp; Jelajahi Event</a>
+    </div>
+
+    <div class="hero-badge">
+      DIRGAHAYU<br>
+      <b>INDONESIA</b>
+    </div>
+  </section>
+
+  <section id="event" class="section">
+    <div class="heading">
+      <h2>Event Kemerdekaan</h2>
+      <span>Dokumentasi pilihan kami</span>
+    </div>
+
+    <div class="event-grid">
+      {% for card in cards %}
+      <a class="event-card" href="{{ url_for('event_detail', slug=card.slug) }}" data-search="{{ card.title }} {{ card.category }} {{ card.description }}">
+        <img src="{{ card.thumbnail }}" alt="{{ card.title }}">
+        <div class="card-fade"></div>
+        <div class="card-info">
+          <p>{{ card.category }}</p>
+          <h3>{{ card.title }}</h3>
+          <span>Lihat foto →</span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    <p id="searchNoResult" class="search-no-result" {% if cards %}hidden{% endif %}>
+      Event tidak ditemukan.
+    </p>
+  </section>
+
+  <section id="galeri" class="section gallery-section">
+    <div class="heading">
+      <h2>Galeri Foto</h2>
+      <a href="#event">Lihat semua →</a>
+    </div>
+    <div class="gallery-strip">
+      {% for card in cards %}
+      <img src="{{ card.thumbnail }}" alt="Dokumentasi {{ card.title }}">
+      {% endfor %}
+    </div>
+  </section>
+</main>
+{% endblock %}

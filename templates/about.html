@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Tentang · 17 Agustus Desa Kita{% endblock %}
+
+{% block content %}
+<main class="about-page">
+  <section class="about-intro">
+    <img class="about-permata-logo" src="{{ url_for('static', filename='images/logo-permata.png') }}" alt="Logo Karang Taruna Permata">
+
+    <div class="about-copy">
+      <p class="eyebrow">TENTANG WEBSITE</p>
+      <h1>Dokumentasi HUT RI<br>Ke-81</h1>
+      <p>
+        Website ini berisi dokumentasi kegiatan selama perayaan HUT Republik
+        Indonesia ke-81, 17 Agustus. Mulai dari perlombaan, olahraga, kegiatan
+        kebersamaan, hingga malam puncak warga.
+      </p>
+      <p>
+        Dipersembahkan oleh <strong>Karang Taruna Permata</strong> sebagai ruang
+        untuk menyimpan dan membagikan momen kebersamaan warga.
+      </p>
+      <a class="button" href="{{ url_for('index') }}#event">Lihat Dokumentasi</a>
+    </div>
+  </section>
+
+  <section class="sponsors-section">
+    <div class="about-heading">
+      <p class="eyebrow">DUKUNGAN</p>
+      <h2>Terima Kasih Sponsor</h2>
+      <p>Area ini disiapkan untuk logo sponsor dan pendukung kegiatan.</p>
+    </div>
+
+    <!-- TAMBAHKAN LOGO SPONSOR DI DALAM AREA INI -->
+    <div class="sponsor-grid">
+      <div class="sponsor-slot">
+        <img src="{{ url_for('static', filename='images/sponsor-a.png') }}" alt="Sponsor 1">
+     </div>
+      <div class="sponsor-slot">Logo Sponsor 2</div>
+      <div class="sponsor-slot">Logo Sponsor 3</div>
+      <div class="sponsor-slot">Logo Sponsor 4</div>
+    </div>
+  </section>
+</main>
+{% endblock %}

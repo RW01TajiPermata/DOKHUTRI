@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ event.title }} · 17 Agustus Desa Kita{% endblock %}
+
+{% block content %}
+<main class="detail">
+  <a class="back" href="{{ url_for('index') }}">← Kembali ke beranda</a>
+
+  <section class="event-hero">
+    <img src="{{ event.cover }}" alt="{{ event.title }}">
+    <div></div>
+    <article>
+      <p class="eyebrow">{{ event.category }}</p>
+      <h1>{{ event.title }}</h1>
+      <p>{{ event.description }}</p>
+    </article>
+  </section>
+
+  <section class="photo-section">
+    <div class="heading">
+      <div>
+        <h2>10 Foto Terbaru</h2>
+        <span>
+          {% if demo %}
+            Contoh tampilan — hubungkan Google Drive untuk foto asli
+          {% else %}
+            Diambil otomatis dari Google Drive
+          {% endif %}
+        </span>
+      </div>
+    </div>
+
+    <div class="photo-grid">
+      {% for photo in photos %}
+      <a href="{% if photo.id %}https://drive.google.com/file/d/{{ photo.id }}/view{% else %}{{ photo.thumbnailLink }}{% endif %}" target="_blank" rel="noopener">
+        <img src="{{ photo.thumbnailLink }}" alt="{{ photo.name }}">
+        <span>{{ photo.name }}</span>
+      </a>
+      {% endfor %}
+    </div>
+
+    {% if drive_url != '#' %}
+    <a class="more" href="{{ drive_url }}" target="_blank" rel="noopener">
+      Lihat lebih banyak <b>→</b>
+    </a>
+    {% else %}
+    <p class="drive-note">Tambahkan link folder Google Drive pada event ini di app.py.</p>
+    {% endif %}
+  </section>
+</main>
+{% endblock %}

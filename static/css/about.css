@@ -1,0 +1,12 @@
+.about-page { max-width: 1100px; margin: 0 auto; padding: 64px 24px 80px; }
+.about-intro { display: grid; grid-template-columns: 280px 1fr; gap: 64px; align-items: center; padding: 52px; border: 1px solid #28292c; border-radius: 16px; background: radial-gradient(circle at top left, #292021 0%, #101112 45%, #08090a 100%); }
+.about-permata-logo { width: 240px; max-width: 100%; margin: auto; border-radius: 50%; }
+.about-copy h1, .about-heading h2 { margin: 0 0 18px; font: 700 44px/1.08 Outfit, sans-serif; }
+.about-copy > p:not(.eyebrow) { max-width: 610px; margin: 0 0 14px; color: #d3d3d4; line-height: 1.65; }
+.about-copy .button { margin-top: 10px; }
+.sponsors-section { padding: 70px 0 0; }
+.about-heading { text-align: center; }.about-heading .eyebrow { margin-bottom: 9px; }.about-heading h2 { font-size: 30px; margin-bottom: 8px; }.about-heading > p:last-child { color: #a7a7aa; margin: 0; }
+.sponsor-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 30px; }
+.sponsor-slot { height: 128px; display: flex; align-items: center; justify-content: center; border: 1px dashed #4a4a4d; border-radius: 10px; color: #858589; font-size: 14px; }
+.sponsor-slot img { max-width: 78%; max-height: 78%; object-fit: contain; }
+@media (max-width: 700px) { .about-page { padding: 35px 18px 55px; }.about-intro { grid-template-columns: 1fr; gap: 30px; padding: 35px 25px; }.about-permata-logo { width: 180px; }.about-copy h1 { font-size: 36px; }.sponsor-grid { grid-template-columns: repeat(2, 1fr); } }

@@ -1,0 +1,64 @@
+/* Penyesuaian khusus layar ponsel */
+@media (max-width: 760px) {
+  .navbar {
+    height: auto;
+    min-height: 70px;
+    padding: 8px 14px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .brand-hut {
+    width: 112px;
+    height: 45px;
+  }
+
+  .brand-hut img { max-height: 44px; }
+
+  .nav-tools {
+    display: flex !important;
+    margin-left: auto;
+    gap: 8px;
+  }
+
+  .search {
+    display: flex;
+    width: min(180px, calc(100vw - 175px));
+    height: 35px;
+    padding: 4px 9px;
+  }
+
+  .search input { min-width: 0; font-size: 13px; }
+  .search-submit { font-size: 17px; margin-right: 4px; }
+  .permata-logo { width: 30px; height: 30px; }
+
+  .navbar nav {
+    display: flex !important;
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 7px 2px 2px;
+  }
+
+  .navbar nav a { font-size: 12px; }
+
+  .hero-copy { left: 24px; }
+  .hero-copy > p:not(.eyebrow) { max-width: 280px; }
+  .hero-badge { right: 22px; bottom: 25px; }
+  .event-card { min-height: 190px; }
+  .card-info { left: 13px; bottom: 13px; }
+  .card-info h3 { font-size: 18px; }
+
+  .detail { padding: 22px 16px 45px; }
+  .event-hero { height: 250px; }
+  .event-hero article { max-width: 90%; }
+  .photo-grid a { height: 150px; }
+  .more { width: 100%; }
+}
+
+@media (max-width: 380px) {
+  .search { width: 145px; }
+  .navbar nav a { font-size: 11px; }
+  .hero h1 { font-size: 39px; }
+}
