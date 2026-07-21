@@ -23,9 +23,6 @@ EVENTS = {
     "poster-hut-ri-81": {"title": "Poster HUT RI 81", "category": "Kreativitas", "description": "Koleksi poster peringatan Hari Ulang Tahun Republik Indonesia ke-81.", "folder_url": "https://drive.google.com/drive/folders/1GwHnL6T6IccWDqzOYGIxY7OrEfmYXht7?usp=sharing", "cover": "https://lh3.googleusercontent.com/d/1qatAO1ITRlKQYd_ZGttR_Zthj0mpJAEz=w2000"},
 }
 
-SAMPLE_PHOTOS = [
-    ""
-
 def drive_photos(folder_url):
     """Baca thumbnail file dari halaman folder Drive publik, tanpa API key."""
     if not folder_url:
