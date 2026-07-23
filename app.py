@@ -10,10 +10,10 @@ app = Flask(__name__)
 HOME_HERO = {
     # Tempel/ganti URL gambar banner di daftar ini. Maksimal atau minimal bebas.
     "covers": [
-        "https://lh3.googleusercontent.com/d/1ermCqVeUvMwUDwjDouKPynadjYKq47ma=w2000",
-        "https://lh3.googleusercontent.com/d/1sZtrn6-Lg-lgRfHQUPRq2rkmMY61vjaj=w2000",
-        "https://lh3.googleusercontent.com/d/1nFbXprSbIe1x7ljy3xegm0_94ZZtgTe9=w2000",
         "https://lh3.googleusercontent.com/d/1lXnh00r6gctU-sh-1mJMVJ3RiKBEwiha=w2000",
+        "https://lh3.googleusercontent.com/d/1ermCqVeUvMwUDwjDouKPynadjYKq47ma=w2000",
+        "https://lh3.googleusercontent.com/d/1nFbXprSbIe1x7ljy3xegm0_94ZZtgTe9=w2000",
+        "https://lh3.googleusercontent.com/d/1sZtrn6-Lg-lgRfHQUPRq2rkmMY61vjaj=w2000",
     ],
 }
 
