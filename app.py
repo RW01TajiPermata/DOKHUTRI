@@ -19,8 +19,8 @@ HOME_HERO = {
 
 EVENTS = {
     "fun-match-badminton": {"title": "Fun Match Badminton", "category": "Olahraga", "description": "Pertandingan bulu tangkis penuh semangat dan sportivitas warga.", "folder_url": "https://drive.google.com/drive/folders/1jWy7DWcSSbEeDzWNppLqnYApjggkd-r6?usp=sharing", "cover": "https://lh3.googleusercontent.com/d/14wyTBvHNR3N2TMCPCmoCWx6ODoB3IBPf=w2000"},
-    "gotong-royong-26-juli": {"title": "Gotong Royong 26 Juli", "category": "Kebersamaan", "description": "Kegiatan gotong royong warga dalam menyambut HUT RI ke-81.", "folder_url": "https://drive.google.com/drive/folders/1cc8BRVnwoa4f6wvz_VpcuXja-cA-xXvI?usp=sharing", "cover": "https://lh3.googleusercontent.com/d/1ZZ2oC6s2HW1ojcLEBEtJDVDjUHpDi9vf=w2000"},
-    "gotong-royong-2-agustus": {"title": "Gotong Royong 2 Agustus", "category": "Kebersamaan", "description": "Semangat kebersamaan warga dalam mempersiapkan perayaan kemerdekaan.", "folder_url": "https://drive.google.com/drive/folders/1XEqITwc0WXrE23YrmtDDMtfKN7pp9w6f?usp=sharing", "cover": "https://lh3.googleusercontent.com/d/1ZZ2oC6s2HW1ojcLEBEtJDVDjUHpDi9vf=w2000"},
+    "gotong-royong-26-juli": {"title": "Gotong Royong 26 Juli", "category": "Kebersamaan", "description": "Kegiatan gotong royong warga dalam menyambut HUT RI ke-81.", "folder_url": "", "cover": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1400&q=85"},
+    "gotong-royong-2-agustus": {"title": "Gotong Royong 2 Agustus", "category": "Kebersamaan", "description": "Semangat kebersamaan warga dalam mempersiapkan perayaan kemerdekaan.", "folder_url": "https://drive.google.com/drive/folders/1XEqITwc0WXrE23YrmtDDMtfKN7pp9w6f?usp=sharing", "cover": "https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=1400&q=85"},
     "lomba-anak-anak": {"title": "Lomba Anak-Anak", "category": "Perlombaan", "description": "Keceriaan anak-anak mengikuti aneka lomba kemerdekaan.", "folder_url": "https://drive.google.com/drive/folders/1PDi3BUB2WNJ3w9Gf9SlaI13LNGrloCdw?usp=sharing", "cover": "https://lh3.googleusercontent.com/d/1ZZ2oC6s2HW1ojcLEBEtJDVDjUHpDi9vf=w2000"},
     "lomba-ibu-ibu": {"title": "Lomba Ibu-ibu", "category": "Perlombaan", "description": "Keseruan dan kekompakan ibu-ibu dalam lomba 17 Agustus.", "folder_url": "https://drive.google.com/drive/folders/1jF_jvBylvF-7n7RjCU6IE45nDGftJ2GJ?usp=sharing", "cover": "https://lh3.googleusercontent.com/d/1ZZ2oC6s2HW1ojcLEBEtJDVDjUHpDi9vf=w2000"},
     "lomba-voli-bapak-bapak": {"title": "Lomba Voli Bapak-bapak", "category": "Olahraga", "description": "Pertandingan voli bapak-bapak yang seru dan penuh semangat.", "folder_url": "https://drive.google.com/drive/folders/1Iorran5cLYrgyCZNQWVBRYokP-IdymBW?usp=sharing", "cover": "https://lh3.googleusercontent.com/d/1ZZ2oC6s2HW1ojcLEBEtJDVDjUHpDi9vf=w2000"},
@@ -52,8 +52,19 @@ def drive_photos(folder_url):
         for file_id in re.findall(r"(?<![A-Za-z0-9_-])1[A-Za-z0-9_-]{32}(?![A-Za-z0-9_-])", response.text):
             if file_id != ignored_id and file_id not in file_ids:
                 file_ids.append(file_id)
-        # lh3.googleusercontent menampilkan file gambar langsung di elemen <img>.
-        return [{"id": file_id, "name": f"Dokumentasi {number}", "thumbnailLink": f"https://lh3.googleusercontent.com/d/{file_id}=w1000"} for number, file_id in enumerate(file_ids[:10], 1)]
+        # Endpoint thumbnail Drive menghasilkan preview JPG untuk foto maupun video.
+        # Dengan ini video di folder juga tampil sebagai thumbnail di galeri.
+        media = []
+        for number, file_id in enumerate(file_ids[:10], 1):
+            position = response.text.find(file_id)
+            nearby_data = response.text[max(0, position - 700):position + 700].lower()
+            media.append({
+                "id": file_id,
+                "name": f"Dokumentasi {number}",
+                "thumbnailLink": f"https://drive.google.com/thumbnail?id={file_id}&sz=w1000",
+                "is_video": "video/" in nearby_data,
+            })
+        return media
     except requests.RequestException:
         return []
 
