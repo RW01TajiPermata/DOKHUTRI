@@ -23,7 +23,7 @@ EVENTS = {
     "gotong-royong-2-agustus": {"title": "Gotong Royong 2 Agustus", "category": "Kebersamaan", "description": "Semangat kebersamaan warga dalam mempersiapkan perayaan kemerdekaan.", "folder_url": "https://drive.google.com/drive/folders/1XEqITwc0WXrE23YrmtDDMtfKN7pp9w6f?usp=sharing", "cover": "https://lh3.googleusercontent.com/d/1ZZ2oC6s2HW1ojcLEBEtJDVDjUHpDi9vf=w2000"},
     "lomba-anak-anak": {"title": "Lomba Anak-Anak", "category": "Perlombaan", "description": "Keceriaan anak-anak mengikuti aneka lomba kemerdekaan.", "folder_url": "https://drive.google.com/drive/folders/1PDi3BUB2WNJ3w9Gf9SlaI13LNGrloCdw?usp=sharing", "cover": "https://lh3.googleusercontent.com/d/1ZZ2oC6s2HW1ojcLEBEtJDVDjUHpDi9vf=w2000"},
     "lomba-ibu-ibu": {"title": "Lomba Ibu-ibu", "category": "Perlombaan", "description": "Keseruan dan kekompakan ibu-ibu dalam lomba 17 Agustus.", "folder_url": "https://drive.google.com/drive/folders/1jF_jvBylvF-7n7RjCU6IE45nDGftJ2GJ?usp=sharing", "cover": "https://lh3.googleusercontent.com/d/1ZZ2oC6s2HW1ojcLEBEtJDVDjUHpDi9vf=w2000"},
-    "lomba-voli-bapak-bapak": {"title": "Lomba Voli Bapak-bapak", "category": "Olahraga", "description": "Pertandingan voli bapak-bapak yang seru dan penuh semangat.", "folder_url": "https://drive.google.com/drive/folders/1Iorran5cLYrgyCZNQWVBRYokP-IdymBW?usp=sharing", "cover": "https://lh3.googleusercontent.com/d/1ZZ2oC6s2HW1ojcLEBEtJDVDjUHpDi9vf=w2000"},
+    "lomba-voli-bapak-bapak": {"title": "Lomba Voli Bapak-bapak", "category": "Olahraga", "description": "Pertandingan voli bapak-bapak yang seru dan penuh semangat.", "folder_url": "https://drive.google.com/drive/folders/1Iorran5cLYrgyCZNQWVBRYokP-IdymBW?usp=sharing", "media_folder_url": "https://drive.google.com/drive/folders/1YRBe6Cvof9PyMokIgZhvj-nXuEJDZ7Dw?usp=sharing", "cover": "https://lh3.googleusercontent.com/d/1YRBe6Cvof9PyMokIgZhvj-nXuEJDZ7Dw=w2000"},
     "lomba-pemuda": {"title": "Lomba Pemuda", "category": "Perlombaan", "description": "Kegiatan kreatif dan kompetitif dari para pemuda desa.", "folder_url": "https://drive.google.com/drive/folders/1kB2y-6l8nllPNAPuT3qf-SFNOZbjA3cf?usp=sharing", "cover": "https://lh3.googleusercontent.com/d/1ZZ2oC6s2HW1ojcLEBEtJDVDjUHpDi9vf=w2000"},
     "malam-tirakatan": {"title": "Malam Tirakatan", "category": "Tradisi", "description": "Malam doa dan refleksi untuk mengenang perjuangan kemerdekaan.", "folder_url": "https://drive.google.com/drive/folders/1pvpT0qLd9C1vnSuPtWhgjM7BDuZXTMla?usp=sharing", "cover": "https://lh3.googleusercontent.com/d/1ZZ2oC6s2HW1ojcLEBEtJDVDjUHpDi9vf=w2000"},
     "malam-pentas-seni": {"title": "Malam Pentas Seni", "category": "Hiburan", "description": "Panggung seni, musik, dan kreativitas warga desa.", "folder_url": "https://drive.google.com/drive/folders/11QTKtgtDlMDT_VzRiEfkItZYyM9tcbFb?usp=sharing", "cover": "https://lh3.googleusercontent.com/d/1ZZ2oC6s2HW1ojcLEBEtJDVDjUHpDi9vf=w2000"},
@@ -95,8 +95,11 @@ def event_detail(slug):
     event = EVENTS.get(slug)
     if not event:
         abort(404)
+    # folder_url = folder induk (untuk tombol Lihat lebih banyak).
+    # media_folder_url = folder tanggal yang langsung berisi foto/video.
     folder_url = event.get("folder_url", "")
-    photos = drive_photos(folder_url)
+    media_folder_url = event.get("media_folder_url", "") or folder_url
+    photos = drive_photos(media_folder_url)
     is_demo = not photos
     if is_demo:
         photos = [{"name": f"Dokumentasi {i + 1}", "thumbnailLink": image} for i, image in enumerate(SAMPLE_PHOTOS)]
